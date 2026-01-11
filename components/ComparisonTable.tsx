@@ -27,9 +27,9 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
       <table className="w-full text-left border-collapse">
         <thead>
           <tr className="bg-slate-50 border-b border-slate-200">
-            <th className="py-5 px-8 text-base font-bold text-slate-500 uppercase tracking-wider w-1/3">Feature / Cost Item</th>
-            <th className="py-5 px-8 text-base font-bold text-slate-700 w-1/4">Current Setup</th>
-            <th className="py-5 px-8 text-base font-bold text-blue-700 bg-blue-50 w-1/3 border-l border-blue-100">Proposed Solution</th>
+            <th className="py-5 px-8 text-lg font-bold text-slate-500 uppercase tracking-wider w-1/3">Feature / Cost Item</th>
+            <th className="py-5 px-8 text-lg font-bold text-slate-700 w-1/4">Current Setup</th>
+            <th className="py-5 px-8 text-lg font-bold text-blue-700 bg-blue-50 w-1/3 border-l border-blue-100">Proposed Solution</th>
           </tr>
         </thead>
         <tbody className="text-slate-700">
@@ -43,7 +43,7 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
             </td>
             <td className="py-5 px-8 font-bold bg-blue-50/30 border-l border-blue-50 text-slate-900 text-lg">
               ${newCreation}
-              <span className="block text-sm font-normal text-slate-500 mt-1">Modern Redesign</span>
+              <span className="block text-lg font-normal text-slate-500">Modern Redesign</span>
             </td>
           </tr>
 
@@ -52,19 +52,19 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
             <td className="py-5 px-8 font-medium text-lg">Monthly Hosting</td>
             <td className="py-5 px-8 text-red-600 font-medium text-lg">
               ${currentHosting}/mo
-              <span className="block text-sm font-normal text-slate-500 mt-1">
+              <span className="block text-lg font-normal text-slate-500">
                 Direct to Provider
               </span>
             </td>
             <td className={`py-5 px-8 font-bold bg-blue-50/30 border-l border-blue-50 text-lg ${clientHostingCost === 0 ? 'text-green-600' : 'text-slate-900'}`}>
               ${clientHostingCost}/mo
               {hostingDiscount > 0 ? (
-                <span className="block text-sm font-normal text-slate-500 mt-1">
+                <span className="block text-lg font-normal text-slate-500">
                   ${newHosting} value - Covered by Developer
                 </span>
               ) : (
-                <span className="block text-sm font-normal text-slate-500 mt-1">
-                   Managed & Paid by Developer
+                <span className="block text-lg font-normal text-slate-500">
+                  Managed & Paid by Developer
                 </span>
               )}
             </td>
@@ -102,7 +102,7 @@ export const ComparisonTable: React.FC<ComparisonTableProps> = ({
             <td className="py-6 px-8 font-medium text-slate-300 border-t border-slate-800 text-lg">
               ${currentTotalMonthly}/mo
             </td>
-            <td className="py-6 px-8 font-bold text-2xl bg-blue-600 border-t border-blue-500 border-l">
+            <td className="py-6 px-8 font-bold text-lg bg-blue-600 border-t border-blue-500 border-l">
               ${newTotalMonthly}/mo
             </td>
           </tr>
