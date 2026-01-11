@@ -4,7 +4,7 @@ This repository contains the codebase for the Tiger Lee’s World Class Tae Kwon
 
 ## 🚀 Live Deployment
 The app is automatically deployed to GitHub Pages:
-**[View Live Site](https://qiangcui.github.io/gloriacloud-tigerleetkd/)**
+**[View Live Site](https://qiangcui.github.io/tigerleetkdquote/)**
 
 ## 🛠 Features
 - **Modern Proposal Document**: Professional design with dynamic content loading via URL parameters.
