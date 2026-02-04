@@ -39,10 +39,11 @@ const App: React.FC = () => {
     const pData: PricingData = {
       newCreation: getNum('setup', 500),
       newHosting: getNum('new_host', 5),
-      hostingDiscount: getNum('discount', 0), // 0 means client pays, set to same as new_host to make it free
+      hostingDiscount: getNum('discount', 5), // Same as newHosting = client pays $0 for hosting
       newMaintenance: getNum('new_maint', 20),
       currentHosting: getNum('old_host', 15),
-      currentMaintenance: getNum('old_maint', 20)
+      currentMaintenance: getNum('old_maint', 20),
+      creationDiscountPercent: getNum('creation_discount_pct', 50)
     };
 
     return { clientData: cData, pricingData: pData };
@@ -223,7 +224,10 @@ const App: React.FC = () => {
           )}
 
           <p className="mt-4 md:mt-6">
-            Regarding hosting: Currently, you pay the provider directly. In this new proposal, <strong>I will manage and pay the hosting provider directly</strong>, simplifying your billing to a single low monthly fee of ${pricingData.newHosting}.
+            Regarding hosting: Currently, you pay the provider directly. In this new proposal, <strong>I will manage and pay the hosting provider directly</strong>
+            {(pricingData.newHosting - pricingData.hostingDiscount) === 0
+              ? ", with hosting included at no extra cost to you."
+              : `, simplifying your billing to a single low monthly fee of $${pricingData.newHosting - pricingData.hostingDiscount}.`}
           </p>
         </div>
 
@@ -242,7 +246,12 @@ const App: React.FC = () => {
             {/* Card 1: Investment */}
             <div className="bg-white rounded-lg p-4 md:p-5 border border-slate-200 shadow-sm flex flex-col justify-center h-full">
               <p className="text-xs md:text-sm uppercase tracking-wide text-slate-500 font-bold mb-1 md:mb-2">One-Time Investment</p>
-              <div className="text-3xl md:text-4xl font-bold text-slate-900">${pricingData.newCreation}</div>
+              <div className="text-3xl md:text-4xl font-bold text-slate-900">
+                ${pricingData.newCreation}
+                {pricingData.creationDiscountPercent != null && pricingData.creationDiscountPercent > 0 && (
+                  <span className="ml-2 text-lg md:text-xl font-semibold text-green-600">({pricingData.creationDiscountPercent}% off)</span>
+                )}
+              </div>
               <p className="text-sm md:text-base text-slate-500 mt-1 md:mt-2">Design & Development Fee</p>
             </div>
 
@@ -260,13 +269,6 @@ const App: React.FC = () => {
               <p className="text-sm md:text-base text-green-600/80 mt-1 md:mt-2">That's ${monthlySavings} saved every month</p>
             </div>
           </div>
-
-          {pricingData.hostingDiscount > 0 && (
-            <div className="mt-4 md:mt-6 pt-4 md:pt-6 border-t border-slate-200 text-sm md:text-base text-slate-500 flex items-start sm:items-center gap-3">
-              <span className="bg-blue-100 text-blue-700 px-2 py-1 md:px-3 rounded-md text-xs md:text-sm font-bold shrink-0 mt-0.5 sm:mt-0">BONUS</span>
-              <span>I will cover the ${pricingData.newHosting}/mo hosting cost, making it free for you.</span>
-            </div>
-          )}
         </div>
 
         {/* Closing & CTA */}

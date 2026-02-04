@@ -20,4 +20,5 @@ export interface PricingData {
   currentHosting: number;
   currentMaintenance: number;
   hostingDiscount: number; // Amount covered by developer
+  creationDiscountPercent?: number; // e.g. 50 for 50% off website creation
 }
